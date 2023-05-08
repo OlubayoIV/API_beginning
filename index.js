@@ -11,8 +11,15 @@ mongoose.Promise = global.Promise;
 
 //setting body parser
 app.use(bodyParser.json())
+
 //initializing routes
 app.use('/api', require('./routes/api'));
+
+//error handling
+app.use(function(err, ask, ans, next){
+    console.log(err);
+    ans.status(422).send({error: err.message})
+})
 
 //listening for requests
 app.listen(process.env.port || 4000, function(){
