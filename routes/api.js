@@ -24,7 +24,7 @@ router.put('/ninjas/:id',function(ask, ans, next){
         });     
     //ans.send({type: 'PUT'});
 });
-
+ 
 //delete request
 router.delete('/ninjas/:id',function(ask, ans, next){
     Ninja.findByIdAndRemove({_id: ask.params.id}).then(function(ninja){
