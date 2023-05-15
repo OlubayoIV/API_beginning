@@ -5,7 +5,13 @@ const Ninja = require('../models/ninja')
  
 //read request
 router.get('/ninjas',function(ask, ans, next){
-    ans.send({type: 'GET'});
+    //ans.send({type: 'GET'});
+    Ninja.geoNear(
+        {type: 'Point', coordinates: [parseFloat(ask.query.lng), parseFloat(ask.query.lat)]},
+        {maxDistance: 100000, spherical: true}
+    ).then(function(ninjas){
+        ans.send(ninjas)
+    });
 });
 
 //create request
