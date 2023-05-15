@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 //creating a geo schema
 const GeoSchema = new Schema({
     type: {
-        type : string,
+        type : String,
         default: "Point"
     },
     coordinates: {
-        type: [number],
+        type: [Number],
         index: "2dsphere"
     }
 });
